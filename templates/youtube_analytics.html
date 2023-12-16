@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Analytics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .video-details {
+            text-align: center;
+        }
+        .video-details img {
+            width: 100%;
+            height: auto;
+        }
+        .video-details img {
+            width: 50%; 
+            height: auto;
+        }
+        
+        .comments {
+            margin-top: 20px;
+        }
+        .comments button {
+            margin-right: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+        .comments button.active {
+            background-color: #ddd;
+        }
+        .comments .comment-list {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+        }
+        .comments .comment-list.active {
+            display: block;
+        }
+        .comments .comment-list li {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        #back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            border: none;
+            background-color: #ddd;
+            cursor: pointer;
+        }
+        #back-button:hover {
+            background-color: #ccc;
+        }
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function showComments(sentiment) {
+            var lists = document.getElementsByClassName('comment-list');
+            for (var i = 0; i < lists.length; i++) {
+                lists[i].style.display = 'none';
+            }
+            document.getElementById(sentiment + '-comments').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <!-- Add the Back button -->
+    <button id="back-button" onclick="window.location.href='/'">Back</button>
+    <div class="container">
+        <div class="video-details">
+            <h2>{{ video_details.title }}</h2>
+            <img src="{{ video_details.thumbnail_url }}" alt="Video Thumbnail">
+            <p>{{ video_details.description }}</p>
+        </div>
+        <div>
+            <h3>Likes:</h3>
+            <p>{{ video_details.likes }}</p>
+        </div>
+        <div>
+            <h3>Views:</h3>
+            <p>{{ video_details.views }}</p>
+        </div>
+        <div>
+            <h3>Uploaded Date:</h3>
+            <p>{{ video_details.uploaded_date }}</p>
+        </div>
+        <div>
+            <h3>Transcript Summary:</h3>
+            <p>{{ video_details.summarized_transcript }}</p>
+        </div>
+        
+        <div class="comments">
+            <button onclick="showComments('positive')">Positive Comments</button>
+            <button onclick="showComments('neutral')">Neutral Comments</button>
+            <button onclick="showComments('negative')">Negative Comments</button>
+            <ul id="positive-comments" class="comment-list">
+                {% for comment in video_details.top_comments if comment.sentiment == 'positive' %}
+                    <li>
+                        <strong>{{ comment.author }}:</strong> {{ comment.textDisplay }} ({{ comment.likeCount }} likes)
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul id="neutral-comments" class="comment-list">
+                {% for comment in video_details.top_comments if comment.sentiment == 'neutral' %}
+                    <li>
+                        <strong>{{ comment.author }}:</strong> {{ comment.textDisplay }} ({{ comment.likeCount }} likes)
+                    </li>
+                {% endfor %}
+            </ul>
+            <ul id="negative-comments" class="comment-list">
+                {% for comment in video_details.top_comments if comment.sentiment == 'negative' %}
+                    <li>
+                        <strong>{{ comment.author }}:</strong> {{ comment.textDisplay }} ({{ comment.likeCount }} likes)
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+    <!-- Add this button below the comments section -->
+<div>
+    <!-- Add the button for the chatbot page -->
+    <a href="{{ url_for('chatbot', context=context_data) }}" target="_blank" class="chatbot-button">
+        <button>Chatbot</button>
+    </a>
+    
+</div>
+
+</body>
+</html>

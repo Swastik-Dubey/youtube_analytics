@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            max-width: 80%;
+            word-wrap: break-word;
+            margin: 10px 0;
+        }
+
+        form {
+            display: flex;
+            width: 80%;
+            margin-top: 10px; /* Adjusted margin */
+        }
+
+        label {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        input {
+            flex: 2;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+
+        
+
+        .user-message, .bot-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #333;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chatbot</h1>
+
+    {% if transcript_available %}
+        <p style="margin-bottom: 0;">Transcript is available.</p>
+    {% else %}
+        <p style="margin-bottom: 0;">Sorry, no transcript available.</p>
+    {% endif %}
+
+    <div class="conversation">
+        {% if conversation_history %}
+            {% for message in conversation_history %}
+                <p class="{{ message['class'] }}">{{ message['content'] }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <form method="post">
+        <label for="user_question">Enter your question:</label>
+        <input type="text" name="user_question" required>
+        <button type="submit">Ask</button>
+    </form>
+
+    {% if user_question %}
+        <p class="user-message">You: {{ user_question }}</p>
+    {% endif %}
+
+    {% if answer %}
+        <p class="bot-message">Bot: {{ answer }}</p>
+    {% endif %}
+</body>
+</html>

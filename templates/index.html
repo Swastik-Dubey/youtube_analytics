@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Search</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        li {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 300px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        h3 {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YouTube Search</h1>
+    </header>
+    <form action="/search" method="post">
+        <input type="text" name="search_query" required>
+        <button type="submit">Search</button>
+    </form>
+    <main>
+        {% if videos %}
+            <ul>
+                {% for video in videos %}
+                    <li>
+                        <a href="{{ url_for('youtube_analytics', video_id=video.video_id) }}">
+                            <img src="{{ video.thumbnail_url }}" alt="{{ video.title }}">
+                            <h3>{{ video.title }}</h3>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </main>
+    
+</body>
+</html>

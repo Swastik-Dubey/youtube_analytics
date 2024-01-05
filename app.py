@@ -7,10 +7,11 @@ from googleapiclient.errors import HttpError
 app = Flask(__name__)
 
 # Replace 'YOUR_API_KEY' with your actual YouTube Data API key
-API_KEY = 'AIzaSyDsj4Uwp-6m6b3Lc5UpOXHojuM8aFhG7r4'
+API_KEY = 'YOUR_API_KEY'
 
 # Define the headers variable
-headers = {"Authorization": "Bearer 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"}
+headers = {"Authorization": "Bearer YOUR_HUGGING_FACE_KEY"}
+
 
 
 # Initialize the sentiment analyzer

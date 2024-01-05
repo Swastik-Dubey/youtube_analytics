@@ -33,6 +33,26 @@ To run the project locally, follow these steps:
    ```bash
     pip install -r requirements.txt
 ```
+## Configuration
+
+Before running the application, you need to configure your YouTube Data API key. Follow the steps below:
+
+1. **Get YouTube Data API Key:**
+   - Go to the [Google Cloud Console](https://console.developers.google.com/).
+   - Create a new project or select an existing one.
+   - Navigate to the "APIs & Services" > "Dashboard" and click on the "+ ENABLE APIS AND SERVICES" button.
+   - Search for "YouTube Data API v3" and enable it for your project.
+   - Once enabled, go to "Credentials" and create an API key.
+
+2. **Replace 'YOUR_API_KEY' in `app.py`:**
+   - Open the `app.py` file.
+   - Locate the line with `API_KEY = 'YOUR_API_KEY'`.
+   - Replace 'YOUR_API_KEY' with the API key you obtained from the Google Cloud Console.
+
+```python
+# Replace 'YOUR_API_KEY' with your actual YouTube Data API key
+API_KEY = 'YOUR_ACTUAL_API_KEY'
+```
 
 3.Run the Flask application:
  ```bash

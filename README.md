@@ -38,7 +38,14 @@ To run the project locally, follow these steps:
  ```bash
 python app.py
 ```
+4.Access the application at http://localhost:5000 in your browser.
 
+##Dependencies
+-Flask
+-requests
+-nltk
+-youtube_transcript_api
+-google-api-python-client
     
       
 

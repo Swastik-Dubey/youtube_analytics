@@ -62,7 +62,7 @@ This project is licensed under the MIT License.
 Acknowledge any third-party libraries, APIs, or services used in the project.
 For more details, visit the GitHub repository.     
 
-Copy this content into your README.md file in your GitHub repository. Make sure to replace the placeholders with your specific project details.
+
 
 
 

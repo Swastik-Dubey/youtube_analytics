@@ -53,6 +53,25 @@ Before running the application, you need to configure your YouTube Data API key.
 # Replace 'YOUR_API_KEY' with your actual YouTube Data API key
 API_KEY = 'YOUR_ACTUAL_API_KEY'
 ```
+### Hugging Face Access Key
+
+To use Hugging Face models for summarization and question-answering, you need to obtain an access key from Hugging Face. Follow the steps below:
+
+Get Hugging Face Access Key:
+
+Go to Hugging Face.
+- Sign in or create a new account.
+- Once logged in, go to your settings page.
+- Copy the API key.
+  
+Replace 'YOUR_HUGGING_FACE_KEY' in app.py:
+- Open the app.py file.
+- Locate the line with headers = {"Authorization": "Bearer YOUR_HUGGING_FACE_KEY"}.
+- Replace 'YOUR_HUGGING_FACE_KEY' with the access key you obtained from Hugging Face.
+# Define the headers variable
+ ```bash
+headers = {"Authorization": "Bearer YOUR_HUGGING_FACE_KEY"}
+```
 
 3.Run the Flask application:
  ```bash

@@ -42,6 +42,7 @@ python app.py
 
 
 ## Dependencies
+
 -Flask
 -requests
 -nltk

@@ -40,7 +40,8 @@ python app.py
 ```
 4.Access the application at http://localhost:5000 in your browser.
 
-##Dependencies
+
+## Dependencies
 -Flask
 -requests
 -nltk

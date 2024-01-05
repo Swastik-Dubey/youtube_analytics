@@ -28,3 +28,17 @@ To run the project locally, follow these steps:
    ```bash
    git clone https://github.com/Swastik-Dubey/youtube_analytics.git
    cd youtube_analytics
+   
+2.Install dependencies:
+   ```bash
+    pip install -r requirements.txt
+```
+
+3.Run the Flask application:
+ ```bash
+python app.py
+```
+
+    
+      
+

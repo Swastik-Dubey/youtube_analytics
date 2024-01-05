@@ -10,7 +10,7 @@ The project is organized into the following main components:
 
 - **`app.py`**: The Flask application handling the backend logic and routes.
 - **`templates/`**: HTML templates for the frontend, including search results and analytics views.
-- **`static/`**: Contains static files like stylesheets and images.
+
 
 ## Features
 

@@ -43,11 +43,11 @@ python app.py
 
 ## Dependencies
 
--Flask
--requests
--nltk
--youtube_transcript_api
--google-api-python-client
+- Flask
+- requests
+- nltk
+- youtube_transcript_api
+- google-api-python-client
     
       
 
